@@ -1,30 +1,42 @@
+<div class="visibility">
 <div class="container">
   <div class="modal">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <h2>Agregar nuevo usuario</h2>
     <p>Foto de perfil</p>
+    <!-- <div class="user-photo"></div>
+    <div>
+      <p>JPG, PNG | Tamaño mínimo de 300px x 300px</p>
+      <label for="image">
+        <input type="file" formControlName="foto" required accept="image/" #image>
+      </label>
+    </div> -->
     <p>Información básica</p>
-    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
       <label>
-        <input type="text" formControlName="nombre" required placeholder="Nombre">
+        <input type="text" formControlName="name" required placeholder="Nombre">
       </label>
       <label>
-        <input type="text" formControlName="apellidoPaterno" required placeholder="Apellido paterno">
+        <input type="text" formControlName="fathersLastName" required placeholder="Apellido paterno">
       </label>
       <label>
-        <input type="text" formControlName="apellidoMaterno" required placeholder="Apellido materno">
+        <input type="text" formControlName="mothersLastName" required placeholder="Apellido materno">
       </label>
       <label>
         <input type="email" formControlName="email" required placeholder="Correo electrónico">
       </label>
       <label>
-        <select formControlName="role">
-          <option *ngFor="let role of roles">{{role.position}}</option>
+        <select formControlName="roleId">
+          <option *ngFor="let role of roles" value="{{role.id}}">{{role.position}}</option>
         </select>
       </label>
+      <div class="role">
+        <p> Inactivo </p>
       <label class="switch">
         <input type="checkbox" formControlName="active">
         <span class="slider round"></span>
       </label>
+      <p> Activo </p>
+      </div>
       <hr>
       <div class="actions">
         <button type="reset" (click)="onClose()" #close class="btn-white">Cancelar</button>
@@ -32,4 +44,5 @@
       </div>
     </form>
   </div>
+</div>
 </div>

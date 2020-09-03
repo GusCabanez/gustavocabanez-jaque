@@ -11,16 +11,18 @@ import { UsersService } from '../services/users.service'
 export class ModalComponent implements OnInit {
 
   users: User[]; 
-  roles: Role[]; 
+  roles: Role[];
+  newUser: User;
 
   @ViewChild('close', { static: false}) modal: ModalComponent;
 
   profileForm = this.fb.group({
-    nombre: ['', Validators.required],
-    apellidoPaterno: ['', Validators.required],
-    apellidoMaterno: ['', Validators.required],
+    //foto: ['', Validators.required],
+    name: ['', Validators.required],
+    fathersLastName: ['', Validators.required],
+    mothersLastName: ['', Validators.required],
     email: ['', Validators.compose([Validators.required, Validators.email])],
-    role: ['Dueño'],
+    roleId: [1],
     active: [false],
   });
 
@@ -33,7 +35,7 @@ export class ModalComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('onSubmit is here');
+    this.usersService.createUser(this.profileForm.value).subscribe(data => console.log(data));
   }
 
   onClose(): void {
