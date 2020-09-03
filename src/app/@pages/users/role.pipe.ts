@@ -13,7 +13,7 @@ export class RolePipe implements PipeTransform {
         transformed = 'Dueño'
         break;
       case 2:
-        transformed = 'Administrador'
+        transformed = 'Admin'
         break;
       case 3: 
         transformed = 'Staff'

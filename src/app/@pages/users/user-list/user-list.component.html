@@ -50,7 +50,12 @@
         <td>{{user.mothersLastName}}</td>
         <td>{{user.email}}</td>
         <td>{{user.roleId | role}}</td>
-        <td class="user-status">{{user.active}}</td>
+        <td class="user-status">
+            <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+  </label>
+        </td>
         <td>
             <button (click)="onEdit(user)" class="edit-button"><img src="../../../../assets/icons/user.svg" alt="user"></button>
             <button (click)="onDelete(user)" class="delete-button"><img src="../../../../assets/icons/trash.svg" alt="trash"></button>
