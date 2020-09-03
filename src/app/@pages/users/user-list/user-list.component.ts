@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
-import { User } from '../users.model';
+import { User, Role } from '../users.model';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { RolePipe } from '../role.pipe';
 
 @Component({
   selector: 'app-user-list',
@@ -10,13 +11,20 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 })
 export class UserListComponent implements OnInit {
   users: User[] = [];
+  localUsers : User[];
+  roles: Role[];
 
   constructor( private usersService : UsersService ) { }
 
   ngOnInit(){
     this.usersService.getUsers().subscribe(data => {
       this.users = data.users;
+      this.localUsers = data.users;
       console.log('Local users', this.users);
+    });
+    this.usersService.getRoles().subscribe(data => {
+      this.roles = data.roles;
+      console.log('Local roles', this.roles);
     });
   }
 
@@ -28,6 +36,14 @@ export class UserListComponent implements OnInit {
     let index = this.users.indexOf(user);
     if (index > -1) {
       this.users.splice(index, 1);
+    }
+  }
+
+  onSearch(value: any): void {
+    if (value !== ''){
+      console.log(this.users.filter(item => value == item.name));
+    } else {
+      this.users = this.localUsers;
     }
   }
 
