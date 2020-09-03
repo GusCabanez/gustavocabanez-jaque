@@ -11,7 +11,7 @@ import { UsersService } from '../services/users.service'
 export class ModalComponent implements OnInit {
 
   users: User[]; 
-  roles = [{'id':1, 'position': 'Dueño'},{'id':2, 'position': 'Administrador'},{'id':3, 'position': 'Staff'}]; 
+  roles: Role[]; 
 
   profileForm = this.fb.group({
     nombre: ['', Validators.required],
