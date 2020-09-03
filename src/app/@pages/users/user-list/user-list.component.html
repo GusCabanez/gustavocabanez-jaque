@@ -1,6 +1,6 @@
 <div class="table-container">
 <div class="table-actions">
-    <input type="text" name="search" id="search" placeholder="Búsqueda" class="busqueda">
+    <input type="text" name="search" id="search" placeholder="Búsqueda" class="busqueda" #search (input)="onSearch(search.value)">
     <div class="select-filters">
         <select name="bypage" id="bypage" class="input">
             <option value="8">8 por página</option>
@@ -11,13 +11,13 @@
             <option value="status">Ordenar por jerarquía</option>
         </select>
         <select name="filter" id="filter" class="input">
-            <option value="lider">Lider</option>
-            <option value="otro">Otro</option>
+            <option value="todos">Todos</option>
+            <option *ngFor="let role of roles" value="{{role.id}}">{{role.position}}</option>
         </select>
     </div>
     <div>    
-        <button>List</button>
-        <button>Grid</button>
+        <button class="button"><img src="../../../../assets/icons/list.svg" alt="list"></button>
+        <button class="button"><img src="../../../../assets/icons/square.svg" alt=""></button>
     </div>
 </div>
 <table cdkDropList (cdkDropListDropped)="drop($event)">
@@ -57,8 +57,10 @@
   </label>
         </td>
         <td>
-            <button (click)="onEdit(user)" class="edit-button"><img src="../../../../assets/icons/user.svg" alt="user"></button>
-            <button (click)="onDelete(user)" class="delete-button"><img src="../../../../assets/icons/trash.svg" alt="trash"></button>
+            <button (click)="onEdit(user)" class="button">
+                <img src="../../../../assets/icons/user.svg" alt="user">
+            </button>
+            <button (click)="onDelete(user)" class="button"><img src="../../../../assets/icons/trash.svg" alt="trash"></button>
         </td>
     </tr>
     </tbody>
