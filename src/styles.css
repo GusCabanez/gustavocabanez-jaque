@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@import url(//db.onlinewebfonts.com/c/9475d6a0b79c164f9f605673714e75d9?family=Circular+Std+Medium);
+
+@import url(//db.onlinewebfonts.com/c/860c3ec7bbc5da3e97233ccecafe512e?family=Circular+Std+Book);
+
+:root {
+    --naranja: #FA6A00;
+    --mamey: #FD5555;
+    --azul-zeta: #131B31;
+    --azul-gris: #677FAC;
+    --gris-background: #F7F7F7;
+
+}
+
+html, body {
+    font-family: 'Circular Std Medium', sans-serif;
+    font-size: 16px;
+    background: var(--gris-background);
+}

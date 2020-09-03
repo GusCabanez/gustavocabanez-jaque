@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { User, Role } from '../users.model';
-import { roles } from '../../../shared/roles'
 
 @Component({
   selector: 'app-modal',

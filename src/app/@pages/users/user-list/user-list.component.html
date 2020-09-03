@@ -1,1 +1,60 @@
-<p>user-list works!</p>
+<div class="table-container">
+<div class="table-actions">
+    <input type="text" name="search" id="search">
+    <select name="bypage" id="bypage">
+        <option value="8">8 por página</option>
+    </select>
+    <select name="sort" id="sort">
+        <option value="asc">Ordenar de A-Z</option>
+        <option value="des">Ordenar de Z-A</option>
+        <option value="status">Ordenar por jerarquía</option>
+    </select>
+    <select name="filter" id="filter">
+        <option value="lider">Lider</option>
+        <option value="otro">Otro</option>
+    </select>
+    <button>List</button>
+    <button>Grid</button>
+</div>
+<table cdkDropList (cdkDropListDropped)="drop($event)">
+    <col class="col-photo">
+    <col class="col-name">
+    <col class="col-firstlastname">
+    <col class="col-secondlastname">
+    <col class="col-mail">
+    <col class="col-role">
+    <col class="col-status">
+    <thead>
+    <tr>
+        <th>Foto</th>
+        <th>Nombre</th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>Correo</th>
+        <th>Rol</th>
+        <th>Status</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users" cdkDrag>
+        <td class="photo-td"><img src="{{user.picture}}" alt="{{user.name}}" class="user-photo"></td>
+        <td>{{user.name}}</td>
+        <td>{{user.fathersLastName}}</td>
+        <td>{{user.mothersLastName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.roleId}}</td>
+        <td class="user-status">{{user.active}}</td>
+        <td style="display: flex;">
+            <button (click)="onEdit(user)">Edit</button>
+            <button (click)="onDelete(user)">Delete</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+<!-- 
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let movie of users" cdkDrag>{{movie.name}}</div>
+</div> -->
+  

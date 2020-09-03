@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { User, Role }  from '../users.model';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,11 @@ export class UsersService {
   }
 
   public getUsers(): Observable<any> {
-    return this.http.get('./assets/users.json');
+    return this.http.get('./assets/users.json')
+    ;
+  }
+
+  public getRoles(): Observable<any> {
+    return this.http.get('./assets/roles.json');
   }
 }

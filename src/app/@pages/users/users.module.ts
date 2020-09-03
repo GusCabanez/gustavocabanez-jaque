@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms'
 import { UsersRoutingModule } from './users-routing.module';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { DragDropModule } from '@angular/cdk/drag-drop'
+
+import { UsersService } from './services/users.service';
 
 import { UsersComponent } from './users.component';
 import { ModalComponent } from './modal/modal.component'
-
-import { UsersService } from './services/users.service';
 import { UserListComponent } from './user-list/user-list.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { UserListComponent } from './user-list/user-list.component';
     UsersRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DragDropModule
   ],
   providers: [ UsersService ],
 })
