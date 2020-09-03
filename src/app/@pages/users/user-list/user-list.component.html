@@ -1,1 +1,40 @@
 <p>user-list works!</p>
+
+<table>
+    <tr>
+        <input type="text" name="search" id="search">
+        <select name="bypage" id="bypage">
+            <option value="8">8 por página</option>
+        </select>
+        <select name="sort" id="sort">
+            <option value="asc">Ordenar de A-Z</option>
+            <option value="des">Ordenar de Z-A</option>
+            <option value="status">Ordenar por jerarquía</option>
+        </select>
+        <select name="filter" id="filter">
+            <option value="lider">Lider</option>
+            <option value="otro">Otro</option>
+        </select>
+        <button>List</button>
+        <button>Grid</button>
+    </tr>
+    <tr>
+        <th>Foto</th>
+        <th>Nombre</th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>Correo</th>
+        <th>Rol</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let user of users">
+        <td>{{user.picture}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.fathersLastName}}</td>
+        <td>{{user.mothersLastName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.roleId}}</td>
+        <td>{{user.active}}</td>
+    </tr>
+</table>
