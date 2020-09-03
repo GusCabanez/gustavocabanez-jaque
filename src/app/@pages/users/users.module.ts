@@ -11,12 +11,13 @@ import { UsersService } from './services/users.service';
 import { UsersComponent } from './users.component';
 import { ModalComponent } from './modal/modal.component'
 import { UserListComponent } from './user-list/user-list.component';
+import { RolePipe } from './role.pipe';
 
 
 @NgModule({
   declarations: [
     UsersComponent, 
-    ModalComponent, UserListComponent
+    ModalComponent, UserListComponent, RolePipe
   ],
   imports: [
     CommonModule,
@@ -24,8 +25,9 @@ import { UserListComponent } from './user-list/user-list.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
   ],
-  providers: [ UsersService ],
+  providers: [ UsersService, RolePipe ],
+  exports: [ RolePipe ]
 })
 export class UsersModule { }
