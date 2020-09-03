@@ -1,0 +1,16 @@
+export const roles = {
+    "roles": [
+      {
+        "id": 1,
+        "position": "Dueño"
+      },
+      {
+        "id": 2,
+        "position": "Administrador"
+      },
+      {
+        "id": 3,
+        "position": "Staff"
+      }
+    ]
+  }

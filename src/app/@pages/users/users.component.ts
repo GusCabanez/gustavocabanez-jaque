@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { users } from '../../shared/users';
+import { roles } from '../../shared/roles';
 
 @Component({
   selector: 'app-users',
