@@ -16,4 +16,8 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  receiveValue(value: boolean){
+    this.isVisible = value;
+  }
+
 }

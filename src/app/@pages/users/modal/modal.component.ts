@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { User, Role } from '../users.model';
 import { UsersService } from '../services/users.service'
@@ -14,7 +14,7 @@ export class ModalComponent implements OnInit {
   roles: Role[];
   newUser: User;
 
-  @ViewChild('close', { static: false}) modal: ModalComponent;
+  @Output() isVisible = new EventEmitter<boolean>();
 
   profileForm = this.fb.group({
     //foto: ['', Validators.required],
@@ -38,8 +38,8 @@ export class ModalComponent implements OnInit {
     this.usersService.createUser(this.profileForm.value).subscribe(data => console.log(data));
   }
 
-  onClose(): void {
-    console.log('Cancel form submission');
+  closeModal(): void {
+    this.isVisible.emit(false);
   }
 
 }
