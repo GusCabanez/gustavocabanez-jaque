@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { User, Role } from '../users.model';
+import { UsersService } from '../services/users.service'
 
 @Component({
   selector: 'app-modal',
@@ -10,7 +11,7 @@ import { User, Role } from '../users.model';
 export class ModalComponent implements OnInit {
 
   users: User[]; 
-  roles = [{'id':1, 'position': 'Dueño'},{'id':2, 'position': 'Administrador'},{'id':3, 'position': 'Staff'}]; 
+  roles: Role[]; 
 
   profileForm = this.fb.group({
     nombre: ['', Validators.required],
@@ -21,9 +22,12 @@ export class ModalComponent implements OnInit {
     active: [false],
   });
 
-  constructor( private fb: FormBuilder) {}
+  constructor( private fb: FormBuilder, private usersService : UsersService ) {}
 
   ngOnInit(): void {
+    this.usersService.getRoles().subscribe(data => {
+      this.roles = data.roles;
+    });
   }
 
   onSubmit(): void {
