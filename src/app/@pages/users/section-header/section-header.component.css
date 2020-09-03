@@ -44,3 +44,9 @@ h2 {
 .pre-btn:hover, .add-btn:hover {
     cursor: pointer;
 }
+.pre-btn:hover {
+    background:#fa6a002e;
+}
+.add-btn:hover {
+    background:#fa6a00b0;
+}
