@@ -1,20 +1,24 @@
 <div class="table-container">
 <div class="table-actions">
-    <input type="text" name="search" id="search">
-    <select name="bypage" id="bypage">
-        <option value="8">8 por página</option>
-    </select>
-    <select name="sort" id="sort">
-        <option value="asc">Ordenar de A-Z</option>
-        <option value="des">Ordenar de Z-A</option>
-        <option value="status">Ordenar por jerarquía</option>
-    </select>
-    <select name="filter" id="filter">
-        <option value="lider">Lider</option>
-        <option value="otro">Otro</option>
-    </select>
-    <button>List</button>
-    <button>Grid</button>
+    <input type="text" name="search" id="search" placeholder="Búsqueda" class="busqueda">
+    <div class="select-filters">
+        <select name="bypage" id="bypage" class="input">
+            <option value="8">8 por página</option>
+        </select>
+        <select name="sort" id="sort" class="input">
+            <option value="asc">Ordenar de A-Z</option>
+            <option value="des">Ordenar de Z-A</option>
+            <option value="status">Ordenar por jerarquía</option>
+        </select>
+        <select name="filter" id="filter" class="input">
+            <option value="lider">Lider</option>
+            <option value="otro">Otro</option>
+        </select>
+    </div>
+    <div>    
+        <button>List</button>
+        <button>Grid</button>
+    </div>
 </div>
 <table cdkDropList (cdkDropListDropped)="drop($event)">
     <col class="col-photo">
@@ -26,6 +30,7 @@
     <col class="col-status">
     <thead>
     <tr>
+        <th> </th>
         <th>Foto</th>
         <th>Nombre</th>
         <th>Apellido Paterno</th>
@@ -33,28 +38,34 @@
         <th>Correo</th>
         <th>Rol</th>
         <th>Status</th>
-        <th>Acciones</th>
+        <th> </th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let user of users" cdkDrag>
+        <td class="grab-td"><img src="../../../../assets/icons/points.svg" alt="points"></td>
         <td class="photo-td"><img src="{{user.picture}}" alt="{{user.name}}" class="user-photo"></td>
         <td>{{user.name}}</td>
         <td>{{user.fathersLastName}}</td>
         <td>{{user.mothersLastName}}</td>
-        <td>{{user.email | slice:0:20}}...</td>
+        <td>{{user.email}}</td>
         <td>{{user.roleId}}</td>
         <td class="user-status">{{user.active}}</td>
-        <td style="display: flex;">
-            <button (click)="onEdit(user)">Edit</button>
-            <button (click)="onDelete(user)">Delete</button>
+        <td>
+            <button (click)="onEdit(user)" class="edit-button"><img src="../../../../assets/icons/user.svg" alt="user"></button>
+            <button (click)="onDelete(user)" class="delete-button"><img src="../../../../assets/icons/trash.svg" alt="trash"></button>
         </td>
     </tr>
     </tbody>
 </table>
 </div>
-<!-- 
-<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let movie of users" cdkDrag>{{movie.name}}</div>
-</div> -->
-  
+
+<!-- <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let user of users" cdkDrag>
+        <div>{{user.name}}</div>
+        <div>{{user.fathersLastName}}</div>
+        <div>{{user.mothersLastName}}</div>
+        <div>{{user.email}}</div>
+    </div>
+</div>
+   -->
