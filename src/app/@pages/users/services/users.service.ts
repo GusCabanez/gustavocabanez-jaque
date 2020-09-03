@@ -14,8 +14,8 @@ export class UsersService {
   private newUser : User;
 
   constructor( private http: HttpClient) {
-    this.getUsers().subscribe(data => console.log('From service: ', data));
-    this.getUsers().subscribe(data => console.log(data.users.concat(this.newUser)));
+    // this.getUsers().subscribe(data => console.log('From service: ', data));
+    //this.getUsers().subscribe(data => console.log(data.users.concat(this.newUser)));
   }
 
   public getUsers(): Observable<any> {
@@ -27,6 +27,7 @@ export class UsersService {
   }
 
   public createUser(user? : any): Observable<any>{
+
     return of(user);
   }
 }

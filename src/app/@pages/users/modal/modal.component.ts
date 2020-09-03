@@ -17,7 +17,7 @@ export class ModalComponent implements OnInit {
   @Output() isVisible = new EventEmitter<boolean>();
 
   profileForm = this.fb.group({
-    //foto: ['', Validators.required],
+    picture: ['http://www.fillmurray.com/200/300'],
     name: ['', Validators.required],
     fathersLastName: ['', Validators.required],
     mothersLastName: ['', Validators.required],
@@ -36,6 +36,7 @@ export class ModalComponent implements OnInit {
 
   onSubmit(): void {
     this.usersService.createUser(this.profileForm.value).subscribe(data => console.log(data));
+    this.closeModal();
   }
 
   closeModal(): void {
