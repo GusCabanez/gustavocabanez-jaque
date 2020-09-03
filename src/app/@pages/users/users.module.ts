@@ -12,12 +12,13 @@ import { UsersComponent } from './users.component';
 import { ModalComponent } from './modal/modal.component'
 import { UserListComponent } from './user-list/user-list.component';
 import { RolePipe } from './role.pipe';
+import { SectionHeaderComponent } from './section-header/section-header.component';
 
 
 @NgModule({
   declarations: [
     UsersComponent, 
-    ModalComponent, UserListComponent, RolePipe
+    ModalComponent, UserListComponent, RolePipe, SectionHeaderComponent
   ],
   imports: [
     CommonModule,
