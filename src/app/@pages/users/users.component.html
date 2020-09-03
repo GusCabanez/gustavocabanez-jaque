@@ -1,3 +1,3 @@
-<app-section-header></app-section-header>
+<app-section-header (isVisible)="receiveValue($event)"></app-section-header>
 <app-user-list></app-user-list>
-<app-modal *ngIf="isVisible"></app-modal>
+<app-modal *ngIf="isVisible" (isVisible)="receiveValue($event)"></app-modal>

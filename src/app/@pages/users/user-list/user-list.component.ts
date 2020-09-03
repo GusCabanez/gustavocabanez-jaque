@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
 import { User, Role } from '../users.model';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
-import { RolePipe } from '../role.pipe';
 
 @Component({
   selector: 'app-user-list',
