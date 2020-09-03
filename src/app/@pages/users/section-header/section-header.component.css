@@ -1,0 +1,52 @@
+.container {
+    font-family: 'Circular Std Book', sans-serif;
+    width: 80%;
+    margin: auto;
+    margin-top: 2rem;
+    padding: 25px 0;
+    background: white;
+    overflow-x: auto;
+    display: flex;
+    justify-content: space-around;
+}
+button { 
+    width: auto;
+    height: 45px;
+    padding: 0 25px;
+    border-radius: 2px;
+    outline: none;
+}
+.buttons {
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+}
+i {
+    margin-right: 10px;
+}
+p {
+    color: #969696;
+}
+h2 {
+    font-size: 20px;
+}
+.pre-btn {
+    margin-right: 15px;
+    color: var(--naranja);
+    border: 1px solid var(--naranja);
+    background: transparent;
+}
+.add-btn {
+    color: white;
+    border: none;
+    background: var(--naranja);
+}
+.pre-btn:hover, .add-btn:hover {
+    cursor: pointer;
+}
+.pre-btn:hover {
+    background:#fa6a002e;
+}
+.add-btn:hover {
+    background:#fa6a00b0;
+}

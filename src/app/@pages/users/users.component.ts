@@ -8,6 +8,8 @@ import { roles } from '../../shared/roles';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  
+  isVisible = false;
 
   constructor() { }
 

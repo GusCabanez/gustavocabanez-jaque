@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { User, Role } from '../users.model';
+import { UsersService } from '../services/users.service'
 
 @Component({
   selector: 'app-modal',
@@ -10,24 +11,31 @@ import { User, Role } from '../users.model';
 export class ModalComponent implements OnInit {
 
   users: User[]; 
-  roles = [{'id':1, 'position': 'Dueño'},{'id':2, 'position': 'Administrador'},{'id':3, 'position': 'Staff'}]; 
+  roles: Role[];
+  newUser: User;
+
+  @ViewChild('close', { static: false}) modal: ModalComponent;
 
   profileForm = this.fb.group({
-    nombre: ['', Validators.required],
-    apellidoPaterno: ['', Validators.required],
-    apellidoMaterno: ['', Validators.required],
+    //foto: ['', Validators.required],
+    name: ['', Validators.required],
+    fathersLastName: ['', Validators.required],
+    mothersLastName: ['', Validators.required],
     email: ['', Validators.compose([Validators.required, Validators.email])],
-    role: ['Dueño'],
+    roleId: [1],
     active: [false],
   });
 
-  constructor( private fb: FormBuilder) {}
+  constructor( private fb: FormBuilder, private usersService : UsersService, private renderer: Renderer2 ) {}
 
   ngOnInit(): void {
+    this.usersService.getRoles().subscribe(data => {
+      this.roles = data.roles;
+    });
   }
 
   onSubmit(): void {
-    console.log('onSubmit is here');
+    this.usersService.createUser(this.profileForm.value).subscribe(data => console.log(data));
   }
 
   onClose(): void {
