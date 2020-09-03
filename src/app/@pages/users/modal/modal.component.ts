@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { User, Role } from '../users.model';
+import { UsersService } from '../services/users.service'
 
 @Component({
   selector: 'app-modal',
@@ -21,9 +22,12 @@ export class ModalComponent implements OnInit {
     active: [false],
   });
 
-  constructor( private fb: FormBuilder) {}
+  constructor( private fb: FormBuilder, private usersService : UsersService ) {}
 
   ngOnInit(): void {
+    this.usersService.getRoles().subscribe(data => {
+      this.roles = data.roles;
+    });
   }
 
   onSubmit(): void {
