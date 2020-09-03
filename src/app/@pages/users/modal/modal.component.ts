@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
-import { UsersService } from '../services/users.service';
 import { User, Role } from '../users.model';
 import { roles } from '../../../shared/roles'
 
@@ -23,10 +22,9 @@ export class ModalComponent implements OnInit {
     active: [false],
   });
 
-  constructor( private usersService : UsersService, private fb: FormBuilder) {}
+  constructor( private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.users = this.usersService.getUsers();
   }
 
   onSubmit(): void {
